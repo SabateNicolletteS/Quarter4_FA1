@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNICEF Philippines - Charity Sign-Up Form</title>
+    <link rel="stylesheet" href="../css/input.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Support UNICEF Philippines</h1>
+        <p>
+            UNICEF Philippines works to promote and protect the rights of every child in the country, 
+            especially the most vulnerable and disadvantaged. Our programs focus on:
+        </p>
+        <ul>
+            <li>Health and Nutrition</li>
+            <li>Education</li>
+            <li>Child Protection</li>
+            <li>Child-Sensitive Public Policy</li>
+            <li>Climate and Environmental Resilience</li>
+        </ul>
+        <p>Join us in making a difference by signing up to support our mission.</p>
+
+        <form id="charityForm">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
+
+            <label>Sex:</label>
+            <div class="radio-group">
+                <input type="radio" id="male" name="sex" value="male" required>
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="sex" value="female" required>
+                <label for="female">Female</label>
+                <input type="radio" id="preferNot" name="sex" value="preferNot" required>
+                <label for="preferNot">Prefer not to say</label>
+            </div>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="contact">Contact Number (Optional):</label>
+            <input type="text" id="contact" name="contact">
+
+            <div class="buttons">
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+
+        <p id="warningMessage" class="hidden">Please fill out all required fields.</p>
+    </div>
+
+    <script>
+        document.getElementById("charityForm").addEventListener("submit", function(event) {
+            let requiredFields = document.querySelectorAll("[required]");
+            let allFilled = true;
+
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    allFilled = false;
+                }
+            });
+
+            if (!allFilled) {
+                event.preventDefault();
+                document.getElementById("warningMessage").classList.remove("hidden");
+            }
+        });
+    </script>
+</body>
+</html>
